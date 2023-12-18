@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+
+    <style>
+        body {
+            font-family: "Lucida Grande","Lucida Sans Unicode", Tahoma, sans-serif;
+        }
+
+        h2 {
+            font-weight: bold;
+            font-size: 160%;
+        }
+
+        table {
+            font-size: 90%;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid gray;
+            text-align: center;
+            height: 55px;
+        }
+
+        th {
+            font-weight: bold;
+            background-color: rgb(204, 204, 204);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        tr:nth-child(odd) {
+            background-color: rgb(237, 237, 237);
+        }
+
+        .column1 {
+            width: 50%;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .column2 {
+            width: 12%;
+        }
+
+        .hrtag {
+            border: none;
+            border-top: 1px dotted gray;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Market Research Survey</h2>
+    <p>Please take a few moments to complete this satisfaction survey. </p>
+    <hr class="hrtag">
+
+    <label for="age">What is your age range?</label><br>
+    <select name="age" id="age" style="width: 50%;">
+        <option value="18-24">18-24</option>
+        <option value="25-34">25-34</option>
+        <option value="35-50">35-50</option>
+        <option value="50+">50+</option>
+    </select><br><br>
+
+    <label for="income">What is your yearly income range?</label><br>
+    <select name="income" id="income" style="width: 50%;">
+        <option value="$0 - $25,000">$0 - $25,000</option>
+        <option value="$25,001 - $50,000">$25,001 - $50,000</option>
+        <option value="$50,001 - $100,000">$50,001 - $100,000</option>
+        <option value="$100,000+">$100,000+</option>
+    </select><br><br>
+
+    <label for="gender" id="gender">Gender</label><br>
+    <input type="radio" name="gender" value="Male" onchange="give_value_gender(this.value)"> Male <br>
+    <input type="radio" name="gender" value="Female" onchange="give_value_gender(this.value)"> Female <br><br>
+
+    <label for="product" id="product">Which of the following products have your purchased in the last 2 months. Please check all that apply.</label><br>
+    <input type="checkbox" name="product" value="Product 1" onchange="give_value_product(this.value)"> Product 1 <br>
+    <input type="checkbox" name="product" value="Product 2" onchange="give_value_product(this.value)"> Product 2 <br>
+    <input type="checkbox" name="product" value="Product 3" onchange="give_value_product(this.value)"> Product 3 <br><br>
+
+    <label for="frequency" id="frequency">How often would you use our new product?</label><br>
+    <input type="radio" name="frequency" value="Daily" onchange="give_value_freq(this.value)"> Daily<br>
+    <input type="radio" name="frequency" value="Weekly" onchange="give_value_freq(this.value)"> Weekly<br>
+    <input type="radio" name="frequency" value="Monthly" onchange="give_value_freq(this.value)"> Monthly<br><br>
+
+    <label for="pay">What would you pay for the new product?</label><br>
+    <label>$</label>
+    <input type="text" style="width: 60px;" id="dollars"> . 
+    <input type="text" style="width: 20px;" id="cents"><br>
+    <p for="dollars" style="display: inline-block; margin-left: 15px ;">Dollars</p>
+    <p for="cents" style="display: inline-block; margin-left: 25px ;">Cents</p><br><br>
+
+    <label for="textarea">What features would you like to see in the new product.</label><br>
+    <textarea name="textarea" id="textarea" cols="50" rows="10" style="width: 100%;"></textarea><br><br>
+
+    <label for="rate">Please rate your level of agreement with the following statements.</label>
+    <table>
+        <tr>
+            <th class="column1"> </th>
+            <th class="column2">Strongly Disagree</th>
+            <th class="column2">Disagree</th>
+            <th class="column2">Agree</th>
+            <th class="column2">Strongly Agree</th>
+        </tr>
+
+        <tr>
+            <td class="column1" id="price">Our product are prices fairly.</td>
+            <td class="column2"><input type="radio" name="price" value="Strongly Disagree" onchange="give_value_price_rate(this.value)"><br>1</td>
+            <td class="column2"><input type="radio" name="price" value="Disagree" onchange="give_value_price_rate(this.value)"><br>2</td>
+            <td class="column2"><input type="radio" name="price" value="Agree" onchange="give_value_price_rate(this.value)"><br>3</td>
+            <td class="column2"><input type="radio" name="price" value="Strongly Agree" onchange="give_value_price_rate(this.value)"><br>4</td>
+        </tr>
+
+        <tr>
+            <td class="column1" id="quality">Our products are high quality.</td>
+            <td class="column2"><input type="radio" name="quality" value="Strongly Disagree" onchange="give_value_quality_rate(this.value)"><br>1</td>
+            <td class="column2"><input type="radio" name="quality" value="Disagree" onchange="give_value_quality_rate(this.value)"><br>2</td>
+            <td class="column2"><input type="radio" name="quality" value="Agree" onchange="give_value_quality_rate(this.value)"><br>3</td>
+            <td class="column2"><input type="radio" name="quality" value="Strongly Agree" onchange="give_value_quality_rate(this.value)"><br>4</td>
+        </tr>
+
+        <tr>
+            <td class="column1" id="recommend">You would recommend our product to a friend or coworker.</td>
+            <td class="column2"><input type="radio" name="recommend" value="Strongly Disagree" onchange="give_value_recommend_rate(this.value)"><br>1</td>
+            <td class="column2"><input type="radio" name="recommend" value="Disagree" onchange="give_value_recommend_rate(this.value)"><br>2</td>
+            <td class="column2"><input type="radio" name="recommend" value="Agree" onchange="give_value_recommend_rate(this.value)"><br>3</td>
+            <td class="column2"><input type="radio" name="recommend" value="Strongly Agree" onchange="give_value_recommend_rate(this.value)"><br>4</td>
+        </tr>
+    </table><br>
+
+    <input type="submit" name="Submit" style="font-weight: bold;;" onclick="print_out()">
+</body>
+</html>
+
+<script>
+    function print_out() {
+        let age = document.getElementById('age').value
+        let income = document.getElementById('income').value
+        let gender = document.getElementById('gender').value
+        let product = document.getElementById('product').value
+        let money = '$' + document.getElementById('dollars').value + '.' + document.getElementById('cents').value
+        let rate_price = document.getElementById('price').value
+        let rate_qua = document.getElementById('quality').value
+        let rate_rec = document.getElementById('recommend').value
+
+        console.log('',
+            'Your age: ' + age + '\n',
+            'Your income: ' + income + '\n',
+            'Your gender: ' + gender + '\n',
+            'The product you choose: ' + product + '\n',
+            'Money you would pay: ' + money + '\n',
+            'Your rate of rice: ' + rate_price + '\n',
+            'Your rate of quality: ' + rate_qua + '\n',
+            'Your rate of recommend: ' + rate_rec + '\n',
+        )
+    }
+
+    function give_value_gender(value) {
+        document.getElementById('gender').value = value
+    }
+
+    function give_value_product(value_p) {
+        document.getElementById('product').value =  document.getElementById('product').value + value_p + ', '
+    }
+
+    function give_value_freq(value) {
+        document.getElementById('frequency').value = value
+    }
+
+    function give_value_price_rate(value) {
+        document.getElementById('price').value = value
+    }
+
+    function give_value_quality_rate(value) {
+        document.getElementById('quality').value = value
+    }
+
+    function give_value_recommend_rate(value) {
+        document.getElementById('recommend').value = value
+    }
+
+</script>
